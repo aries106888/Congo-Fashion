@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Congo Fashion House | Kinshasa Haute Couture</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!--embedded css goes here-->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #ffffff;
+            color: #2b2528;
+            line-height: 1.6;
+        }
+
+        #ribbon {
+            height: 7px;
+            background: linear-gradient(90deg, #c41c4a, #e5b342, #c41c4a);
+        }
+
+        #navbar {
+            background-color: #14030d;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #brand {
+            color: #e5b342;
+            font-size: 22px;
+            font-weight: bold;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-link {
+            color: #dfd4d9;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .nav-link:hover, .active {
+            background-color: #e5b342;
+            color: #14030d;
+            font-weight: bold;
+        }
+
+        .btn-salon {
+            background-color: #e5b342;
+            color: #14030d;
+            padding: 8px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* ── Hero Fullscreen Carousel ── */
+        #hero {
+            position: relative;
+            min-height: 88vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            color: #ffffff;
+        }
+
+        /* Sliding background images */
+        .hero-bg-slides {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        /* Ken Burns subtle zoom for cinematic 4K feel */
+        @keyframes kenBurns {
+            0%   { transform: scale(1.0);   }
+            100% { transform: scale(1.08);  }
+        }
+
+        .hero-bg-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center top;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+        }
+
+        .hero-bg-slide.active {
+            opacity: 1;
+            animation: kenBurns 8s ease-in-out forwards;
+        }
+
+        /* Rich dark gradient overlay — lighter in the centre so images show through */
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(8, 1, 5, 0.55) 0%,
+                rgba(12, 2, 8, 0.35) 40%,
+                rgba(10, 1, 6, 0.65) 100%
+            );
+            z-index: 1;
+        }
+
+        /* Centred text layer */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            background-color: rgba(196, 28, 74, 0.30);
+            color: #ff9fb4;
+            border: 1px solid #c41c4a;
+            padding: 6px 18px;
+            border-radius: 16px;
+            font-size: 11px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero-title {
+            font-size: 52px;
+            color: #ffffff;
+            margin: 0 0 16px 0;
+            font-weight: bold;
+            line-height: 1.15;
+            text-shadow: 0 3px 14px rgba(0,0,0,0.7);
+        }
+
+        .hero-subtitle {
+            font-size: 17px;
+            color: #e5d8dc;
+            font-style: italic;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .hero-desc {
+            font-size: 14px;
+            color: #cfbecc;
+            margin-bottom: 28px;
+            line-height: 1.7;
+        }
+
+        .btn-gold {
+            background-color: #e5b342;
+            color: #14030d;
+            padding: 13px 32px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            box-shadow: 0 4px 18px rgba(229,179,66,0.45);
+        }
+
+        .btn-gold:hover {
+            background-color: #ffffff;
+            color: #14030d;
+            transition: all 0.3s ease;
+        }
+
+        /* Caption strip at the bottom of the hero */
+        .hero-caption-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0; right: 0;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 40px;
+            background: rgba(20, 3, 13, 0.72);
+            border-top: 1px solid rgba(229, 179, 66, 0.35);
+            backdrop-filter: blur(6px);
+        }
+
+        .hero-caption-bar .cap-text h3 {
+            margin: 0;
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        .hero-caption-bar .cap-text p {
+            margin: 3px 0 0 0;
+            color: #e5b342;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        /* Arrow buttons inside the caption bar */
+        .hero-arrows {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-arrow {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background-color: rgba(20, 3, 13, 0.70);
+            border: 2px solid #e5b342;
+            color: #e5b342;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+        }
+
+        .card-arrow:hover {
+            background-color: #e5b342;
+            color: #14030d;
+            transform: scale(1.1);
+        }
+
+        /* Left / right floating arrows on the hero */
+        .hero-arrow-left,
+        .hero-arrow-right {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 4;
+        }
+
+        .hero-arrow-left  { left: 28px; }
+        .hero-arrow-right { right: 28px; }
+
+        .c-counter {
+            color: #e5b342;
+            font-weight: bold;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+        }
+
+        /* Hide old controls — now inside caption bar */
+        .carousel-controls { display: none; }
+
+        .c-btn {
+            background-color: transparent;
+            color: #e5b342;
+            border: 1px solid #e5b342;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .c-btn:hover {
+            background-color: #e5b342;
+            color: #14030d;
+            transition: all 0.3s ease;
+        }
+
+        .c-counter {
+            color: #e5b342;
+            font-weight: bold;
+            font-size: 13px;
+            letter-spacing: 1px;
+            margin-left: 6px;
+        }
+
+        /* Welcome Section */
+        #welcome {
+            background-color: #faf7f2;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 30px;
+            color: #14030d;
+            margin-bottom: 10px;
+        }
+
+        .section-desc {
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            color: #6e646a;
+            font-size: 15px;
+        }
+
+        .stats-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .stat-card {
+            background-color: #ffffff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            border-left: 5px solid #e5b342;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            flex: 1;
+        }
+
+        .stat-num {
+            font-size: 36px;
+            color: #c41c4a;
+            font-weight: bold;
+        }
+
+        .stat-text {
+            color: #2b2528;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Featured Collections Section */
+        #featured {
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .card-grid {
+            max-width: 1100px;
+            margin: 30px auto 0 auto;
+            display: flex;
+            gap: 25px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border: 1px solid rgba(229, 179, 66, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            flex: 1;
+            text-align: left;
+        }
+
+        .card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-body h3 {
+            margin: 0 0 10px 0;
+            color: #14030d;
+        }
+
+        .card-body p {
+            color: #6e646a;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .btn-card {
+            background-color: #14030d;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .btn-card:hover {
+            background-color: #c41c4a;
+        }
+
+        /* Footer */
+        #footer {
+            background-color: #14030d;
+            color: #dfd4d9;
+            padding: 40px;
+            text-align: center;
+            border-top: 2px solid #e5b342;
+        }
+
+        #footer a {
+            color: #e5b342;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        #footer a:hover {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- top cultural ribbon -->
+    <div id="ribbon"></div>
+
+    <!-- navigation bar -->
+    <nav id="navbar">
+        <a href="index.html" id="brand"><i class="bi bi-gem"></i> CONGO FASHION HOUSE</a>
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-link active">Home</a></li>
+            <li><a href="collections.html" class="nav-link">Collections</a></li>
+            <li><a href="Design Models.html" class="nav-link">Designers &amp; Models</a></li>
+            <li><a href="fashion gallery.html" class="nav-link">Gallery</a></li>
+            <li><a href="contact Us.html" class="nav-link">About &amp; Contact</a></li>
+            <li><a href="contact Us.html#appointment-form" class="btn-salon">Private Salon</a></li>
+        </ul>
+    </nav>
+
+    <!-- hero section — fullscreen background carousel -->
+    <header id="hero">
+        <!-- sliding background images -->
+        <div class="hero-bg-slides" id="hero-bg-slides"></div>
+        <!-- dark overlay -->
+        <div class="hero-overlay"></div>
+
+        <!-- centred text -->
+        <div class="hero-content">
+            <span class="hero-badge"><i class="bi bi-stars"></i> TRADITION &bull; CREATIVITY &bull; WAKANDA MODERN STYLE</span>
+            <h1 class="hero-title" id="slide-title">Congo Fashion House</h1>
+            <p class="hero-subtitle" id="slide-sub">Celebrating Congolese couture, ancestral textile philosophy, and contemporary grandeur.</p>
+            <p class="hero-desc" id="slide-desc">Immerse yourself in wax-kitenge silhouettes, structured bespoke cuts, and craftsmanship with futuristic Wakanda elegance.</p>
+            <a href="collections.html" class="btn-gold">Explore Collections &rarr;</a>
+        </div>
+
+        <!-- left arrow: absolutely on the left side of the hero -->
+        <button class="card-arrow hero-arrow-left" onclick="prevSlide()" title="Previous Look">
+            <i class="bi bi-chevron-left"></i>
+        </button>
+
+        <!-- right arrow: absolutely on the right side of the hero -->
+        <button class="card-arrow hero-arrow-right" onclick="nextSlide()" title="Next Look">
+            <i class="bi bi-chevron-right"></i>
+        </button>
+
+        <!-- caption bar at the bottom (counter only, no arrows) -->
+        <div class="hero-caption-bar">
+            <div class="cap-text">
+                <h3 id="caption-title">The Grand Sceptre Royal Mantle</h3>
+                <p id="caption-tag">3D COUTURE SPOTLIGHT 2026</p>
+            </div>
+            <span class="c-counter" id="slide-counter">01 / 05 LOOKS</span>
+        </div>
+    </header>
+
+    <!-- welcome and heritage section -->
+    <section id="welcome">
+        <h2 class="section-title">Welcome to Congo Fashion House</h2>
+        <p class="section-desc">We are a proud Congolese fashion studio atelier promoting our rich culture, traditional fabrics, modern designs and local talent to the world.</p>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-num">15+</div>
+                <div class="stat-text">Master Artisans</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">100%</div>
+                <div class="stat-text">Ethically Sourced Silk</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">14</div>
+                <div class="stat-text">Global Runway Awards</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- featured collections section -->
+    <section id="featured">
+        <h2 class="section-title">Featured African Wear Collections</h2>
+        <p class="section-desc">Handcrafted selections reflecting centuries of textile heritage and futuristic African royalty.</p>
+
+        <div class="card-grid">
+            <div class="card">
+                <img src="images/_A Nobreza Do Amor_ no Rio Fashion Week 2026 (1).jpg" onerror="this.onerror=null; this.src='images/Love forever by JOEYMUSIC 256.jpg';" alt="Traditional Inspired">
+                <div class="card-body">
+                    <h3>Traditional Inspired</h3>
+                    <p>Timeless ceremonial garments interpreting ancestral sculptural silhouettes and regal African court prints.</p>
+                    <a href="collections.html#traditional" class="btn-card">View Collection</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="images/African Fashion Week Lagos Promotes Emerging Talent.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80';" alt="Modern African">
+                <div class="card-body">
+                    <h3>Modern African</h3>
+                    <p>Contemporary tailored suits bringing authentic colors and expressive Kinshasa urban energy into international salons.</p>
+                    <a href="collections.html#modern" class="btn-card">View Collection</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="images/_A Nobreza Do Amor_ no Rio Fashion Week 2026.jpg" onerror="this.onerror=null; this.src='images/This is what royalty wears.jpg';" alt="Men's Haute Sapeur">
+                <div class="card-body">
+                    <h3>Men's Haute Sapeur</h3>
+                    <p>Sophisticated Congolese dandies and modern menswear with sharp French tailoring and bold velvet accents.</p>
+                    <a href="collections.html#mens" class="btn-card">View Collection</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer section -->
+    <footer id="footer">
+        <p>&copy; 2026 Congo Fashion House. All rights reserved. Fashion is Culture &mdash; Congo.</p>
+        <p>
+            <a href="index.html">Home</a> |
+            <a href="collections.html">Collections</a> |
+            <a href="Design Models.html">Designers &amp; Models</a> |
+            <a href="fashion gallery.html">Gallery</a> |
+            <a href="contact Us.html">About &amp; Contact</a>
+        </p>
+        <p style="font-size: 13px; color: #a0929a; margin-top: 10px;">KINSHASA &bull; PARIS &bull; MILAN</p>
+    </footer>
+
+    <!-- fullscreen hero background carousel script -->
+    <script>
+        const slides = [
+            {
+                title: "Congo Fashion House",
+                sub: "Celebrating Congolese couture, ancestral textile philosophy, and contemporary grandeur.",
+                desc: "Immerse yourself in wax-kitenge silhouettes, structured bespoke cuts, and craftsmanship with futuristic Wakanda elegance.",
+                primaryImg: "images/_A Nobreza Do Amor_ no Rio Fashion Week 2026 (1).jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=80",
+                caption: "The Grand Sceptre Royal Mantle",
+                tag: "3D COUTURE SPOTLIGHT 2026"
+            },
+            {
+                title: "The Golden Court Robes",
+                sub: "Fluid bronze silk and ancestral layered beadwork celebrating Congolese nobility.",
+                desc: "Handcrafted woven fabrics and artisanal jewelry embodying the vibrant legacy of Central African high couture.",
+                primaryImg: "images/_A Nobreza Do Amor_ no Rio Fashion Week 2026.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80",
+                caption: "Golden Court Robes & Talismans",
+                tag: "RIO FASHION WEEK HAUTE EDIT"
+            },
+            {
+                title: "London Runway Silk & Coral",
+                sub: "Avant-garde draped shawls paired with radiant geometric palazzo trousers.",
+                desc: "Merging ancestral coral bead neckpieces with modern metropolitan flair on international catwalks.",
+                primaryImg: "images/Africa Fashion Week London (AFWL)  2026.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80",
+                caption: "Drapeau Solaire & Coral Collar",
+                tag: "AFWL LONDON RUNWAY"
+            },
+            {
+                title: "Geometric Cowrie Power Suit",
+                sub: "Flared peplum sleeves and architectural Ankara suiting crowned with sacred cowrie shells.",
+                desc: "A bold testament to female African empowerment and directional tailoring made for international salons.",
+                primaryImg: "images/African Fashion Week Lagos Promotes Emerging Talent.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=80",
+                caption: "Reine Cowrie Ankara Suit",
+                tag: "AFW LAGOS SHOWCASE"
+            },
+            {
+                title: "Ancestral Cast Brass Rings",
+                sub: "Hand-cast mask signets, spiral talismans, and polished cowrie jewelry regalia.",
+                desc: "Every talisman honors centuries of metalworking guilds and royal Congolese ceremonial adornment.",
+                primaryImg: "images/African rings.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1200&q=80",
+                caption: "Ancestral Brass & Cowrie Regalia",
+                tag: "ARTISANAL JEWELRY COLLECTION"
+            },
+            {
+                title: "Kente Royalty — The Tatelier Edit",
+                sub: "Sweeping handwoven Kente cloth draped with artisan gold medallion and layered cuffs.",
+                desc: "A statement of regal West-African ceremony: bold green and gold geometric Kente reimagined for haute couture runways.",
+                primaryImg: "images/Ghanian men.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=80",
+                caption: "Kente Grand Drape — Tatelier 2026",
+                tag: "WEST AFRICA HERITAGE EDITION"
+            },
+            {
+                title: "The Leopard Throne — Regal Regalia",
+                sub: "A sovereign in full ceremonial court dress: leopard cloak, royal sceptre, feathered crown.",
+                desc: "Majestic Congolese-inspired royal dressing, evoking the splendour of great Central African kingdoms.",
+                primaryImg: "images/Love forever by JOEYMUSIC 256.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80",
+                caption: "The Leopard Throne — Royal Atelier",
+                tag: "CEREMONIAL HERITAGE COLLECTION"
+            }
+        ];
+
+        let index = 0;
+
+        // Build the background slide divs from the slides array
+        const bgContainer = document.getElementById("hero-bg-slides");
+        slides.forEach((s, i) => {
+            const div = document.createElement("div");
+            div.className = "hero-bg-slide" + (i === 0 ? " active" : "");
+            div.style.backgroundImage = `url('${s.primaryImg}')`;
+            bgContainer.appendChild(div);
+        });
+
+        const bgSlides = bgContainer.querySelectorAll(".hero-bg-slide");
+
+        function updateSlide() {
+            // Crossfade backgrounds
+            bgSlides.forEach((s, i) => s.classList.toggle("active", i === index));
+
+            // Update text
+            document.getElementById("slide-title").innerText = slides[index].title;
+            document.getElementById("slide-sub").innerText   = slides[index].sub;
+            document.getElementById("slide-desc").innerText  = slides[index].desc;
+            document.getElementById("caption-title").innerText = slides[index].caption;
+            document.getElementById("caption-tag").innerText   = slides[index].tag;
+            const n = String(index + 1).padStart(2, "0");
+            document.getElementById("slide-counter").innerText = `${n} / 07 LOOKS`;
+        }
+
+        function nextSlide() {
+            index = (index + 1) % slides.length;
+            updateSlide();
+        }
+
+        function prevSlide() {
+            index = (index - 1 + slides.length) % slides.length;
+            updateSlide();
+        }
+
+        // Auto-advance every 6 seconds; pause on hover
+        let timer = setInterval(nextSlide, 6000);
+        const hero = document.getElementById("hero");
+        hero.addEventListener("mouseenter", () => clearInterval(timer));
+        hero.addEventListener("mouseleave", () => { clearInterval(timer); timer = setInterval(nextSlide, 6000); });
+    </script>
+</body>
+</html>

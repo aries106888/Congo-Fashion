@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Designers &amp; Models | Congo Fashion House</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!--embedded css goes here-->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #ffffff;
+            color: #2b2528;
+            line-height: 1.6;
+        }
+
+        #ribbon {
+            height: 7px;
+            background: linear-gradient(90deg, #c41c4a, #e5b342, #c41c4a);
+        }
+
+        #navbar {
+            background-color: #14030d;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #brand {
+            color: #e5b342;
+            font-size: 22px;
+            font-weight: bold;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-link {
+            color: #dfd4d9;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .nav-link:hover, .active {
+            background-color: #e5b342;
+            color: #14030d;
+            font-weight: bold;
+        }
+
+        .btn-salon {
+            background-color: #e5b342;
+            color: #14030d;
+            padding: 8px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #talent-header {
+            background: linear-gradient(135deg, #14030d, #2e091f, #15020c);
+            color: #ffffff;
+            padding: 50px 40px;
+            text-align: center;
+        }
+
+        .header-badge {
+            color: #e5b342;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .header-title {
+            font-size: 38px;
+            margin: 0 0 10px 0;
+        }
+
+        .header-desc {
+            max-width: 680px;
+            margin: 0 auto;
+            color: #d8c9d1;
+            font-size: 15px;
+        }
+
+        #visionaries {
+            padding: 60px 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 28px;
+            color: #14030d;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .section-desc {
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            color: #6e646a;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .talent-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .talent-card {
+            background-color: #ffffff;
+            border: 1px solid rgba(229, 179, 66, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .talent-card:hover {
+            transform: translateY(-4px);
+            border-color: #e5b342;
+            transition: all 0.3s ease;
+        }
+
+        .talent-img-wrap {
+            position: relative;
+            height: 240px;
+        }
+
+        .talent-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .talent-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #e5b342;
+            color: #14030d;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .talent-info {
+            padding: 16px;
+            flex: 1;
+        }
+
+        .talent-info h3 {
+            margin: 0 0 6px 0;
+            color: #14030d;
+            font-size: 18px;
+        }
+
+        .talent-info p {
+            margin: 0 0 12px 0;
+            color: #6e646a;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .skill-badge {
+            background-color: #f7f4ee;
+            color: #2b2528;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 4px;
+        }
+
+        #curatorial-essay {
+            background-color: #faf7f2;
+            padding: 60px 40px;
+        }
+
+        .essay-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .essay-img {
+            flex: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid #e5b342;
+        }
+
+        .essay-img img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .essay-text {
+            flex: 1.2;
+        }
+
+        .essay-text h2 {
+            font-size: 26px;
+            color: #14030d;
+            margin-top: 5px;
+        }
+
+        .essay-text p {
+            color: #6e646a;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .essay-stats {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .stat-box {
+            flex: 1;
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #c41c4a;
+        }
+
+        .stat-box h3 {
+            margin: 0;
+            color: #c41c4a;
+            font-size: 28px;
+        }
+
+        .stat-box p {
+            margin: 2px 0 0 0;
+            font-size: 12px;
+            color: #2b2528;
+            font-weight: bold;
+        }
+
+        #lookbook {
+            padding: 60px 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .lookbook-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .lookbook-img {
+            height: 240px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(229, 179, 66, 0.4);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+            position: relative;
+        }
+
+        .lookbook-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .lookbook-img:hover img {
+            transform: scale(1.06);
+        }
+
+        #open-call {
+            background: linear-gradient(135deg, #1f0511, #2e091f);
+            color: #ffffff;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .btn-call {
+            background-color: #e5b342;
+            color: #14030d;
+            padding: 12px 26px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        .btn-call:hover {
+            background-color: #ffffff;
+        }
+
+        #footer {
+            background-color: #14030d;
+            color: #dfd4d9;
+            padding: 40px;
+            text-align: center;
+            border-top: 2px solid #e5b342;
+        }
+
+        #footer a {
+            color: #e5b342;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- top ribbon -->
+    <div id="ribbon"></div>
+
+    <!-- navigation bar -->
+    <nav id="navbar">
+        <a href="index.html" id="brand"><i class="bi bi-gem"></i> CONGO FASHION HOUSE</a>
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="collections.html" class="nav-link">Collections</a></li>
+            <li><a href="Design Models.html" class="nav-link active">Designers &amp; Models</a></li>
+            <li><a href="fashion gallery.html" class="nav-link">Gallery</a></li>
+            <li><a href="contact Us.html" class="nav-link">About &amp; Contact</a></li>
+            <li><a href="contact Us.html#appointment-form" class="btn-salon">Private Salon</a></li>
+        </ul>
+    </nav>
+
+    <!-- talent header -->
+    <header id="talent-header">
+        <span class="header-badge">&bull; KINSHASA HAUTE ATELIER &bull;</span>
+        <h1 class="header-title">Our Designers &amp; Models</h1>
+        <p class="header-desc">Meet the creative minds, master tailors, and magnetic faces shaping modern Congolese fashion on the global stage.</p>
+    </header>
+
+    <!-- visionaries & muses section -->
+    <section id="visionaries">
+        <h2 class="section-title">Visionaries &amp; Muses</h2>
+        <p class="section-desc">Every silhouette carries an ancestral story, reinterpreted through bespoke cut and artisanal Kitenge motifs.</p>
+
+        <div class="talent-grid">
+            <!-- 1. Amani Kafando -->
+            <div class="talent-card">
+                <div class="talent-img-wrap">
+                    <span class="talent-tag">Fashion Designer</span>
+                    <img src="images/Arsema thomas.jpg" alt="Amani Kafando">
+                </div>
+                <div class="talent-info">
+                    <h3>Amani Kafando</h3>
+                    <p>Creates modern designs inspired by traditional fabrics, blending heritage with contemporary style.</p>
+                    <span class="skill-badge">Bespoke Couture</span>
+                    <span class="skill-badge">Textile Art</span>
+                </div>
+            </div>
+
+            <!-- 2. Blaise Tshibanda -->
+            <div class="talent-card">
+                <div class="talent-img-wrap">
+                    <span class="talent-tag">Tailor &amp; Designer</span>
+                    <img src="images/African Fashion Week Lagos Promotes Emerging Talent.jpg" alt="Blaise Tshibanda">
+                </div>
+                <div class="talent-info">
+                    <h3>Blaise Tshibanda</h3>
+                    <p>Known for tailored suits for men and women, merging Sapeur elegance with African opulence.</p>
+                    <span class="skill-badge">Directional Suiting</span>
+                    <span class="skill-badge">Haute Sapeur</span>
+                </div>
+            </div>
+
+            <!-- 3. Nadia Mbuyi -->
+            <div class="talent-card">
+                <div class="talent-img-wrap">
+                    <span class="talent-tag">Fashion Stylist</span>
+                    <img src="images/Modern Ankara Power Suit Outfits _ African Print Duster & Trousers.jpg" alt="Nadia Mbuyi">
+                </div>
+                <div class="talent-info">
+                    <h3>Nadia Mbuyi</h3>
+                    <p>Combines Afrocentric culture and modern trends to curate looks for red carpets and runways.</p>
+                    <span class="skill-badge">Editorial Direction</span>
+                    <span class="skill-badge">Set Design</span>
+                </div>
+            </div>
+
+            <!-- 4. Elvis Lumu -->
+            <div class="talent-card">
+                <div class="talent-img-wrap">
+                    <span class="talent-tag">Premium Model</span>
+                    <img src="images/House Of Vieve (Nigeria)  #AMVCA2026.jpg" alt="Elvis Lumu">
+                </div>
+                <div class="talent-info">
+                    <h3>Elvis Lumu</h3>
+                    <p>An international runway model known for versatility and projecting African luxury worldwide.</p>
+                    <span class="skill-badge">Paris Runway</span>
+                    <span class="skill-badge">Campaign Lead</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- curatorial essay section -->
+    <section id="curatorial-essay">
+        <div class="essay-wrap">
+            <div class="essay-img">
+                <img src="images/This is what royalty wears.jpg" alt="Kinshasa Fashion Week Runway & Royalty">
+            </div>
+            <div class="essay-text">
+                <span style="color:#c41c4a; font-weight:bold; font-size:12px; text-transform:uppercase;">CURATORIAL ESSAY</span>
+                <h2>The Influence of Congolese Designers</h2>
+                <p>Congolese designers are shaping African fashion by bringing unique patterns, rich cultural stories, and innovative designs to the global stage. Their work inspires creativity and showcases the beauty of Congolese heritage.</p>
+                
+                <div class="essay-stats">
+                    <div class="stat-box">
+                        <h3>48+</h3>
+                        <p>Atelier Apprentices</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>100%</h3>
+                        <p>Ethical Sourcing</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>14</h3>
+                        <p>Global Showcases</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- runway lookbook section -->
+    <section id="lookbook">
+        <h2 class="section-title">Couture In Motion &bull; Lookbook</h2>
+        <div class="lookbook-grid">
+            <div class="lookbook-img"><img src="images/_A Nobreza Do Amor_ no Rio Fashion Week 2026 (1).jpg" alt="Look 1 &mdash; Royal Sceptre Mantle"></div>
+            <div class="lookbook-img"><img src="images/_A Nobreza Do Amor_ no Rio Fashion Week 2026.jpg" alt="Look 2 &mdash; Golden Court Robe"></div>
+            <div class="lookbook-img"><img src="images/Africa Fashion Week London (AFWL)  2026.jpg" alt="Look 3 &mdash; London Runway Silk &amp; Coral"></div>
+            <div class="lookbook-img"><img src="images/African Fashion Week Lagos Promotes Emerging Talent.jpg" alt="Look 4 &mdash; Cowrie Crown Ankara Suit"></div>
+            <div class="lookbook-img"><img src="images/African rings.jpg" alt="Look 5 &mdash; Ancestral Cast Brass Regalia"></div>
+        </div>
+    </section>
+
+    <!-- talent call banner -->
+    <section id="open-call">
+        <h3 style="color:#e5b342; margin-bottom:8px;">CALLING ALL UPCOMING DESIGNERS &amp; MODELS</h3>
+        <p style="color:#d8c9d1; font-size:14px; margin:0 auto; max-width:600px;">Showcase your creativity and join the next generation of Congolese icons.</p>
+        <a href="contact Us.html#appointment-form" class="btn-call">Submit Portfolio &rarr;</a>
+    </section>
+
+    <!-- footer section -->
+    <footer id="footer">
+        <p>&copy; 2026 Congo Fashion House. All rights reserved. Fashion is Culture &mdash; Congo.</p>
+        <p>
+            <a href="index.html">Home</a> |
+            <a href="collections.html">Collections</a> |
+            <a href="Design Models.html">Designers &amp; Models</a> |
+            <a href="fashion gallery.html">Gallery</a> |
+            <a href="contact Us.html">About &amp; Contact</a>
+        </p>
+    </footer>
+
+    
+</body>
+</html>

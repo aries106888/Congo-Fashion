@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Gallery | Congo Fashion House</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!--embedded css goes here-->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #ffffff;
+            color: #2b2528;
+            line-height: 1.6;
+        }
+
+        #ribbon {
+            height: 7px;
+            background: linear-gradient(90deg, #c41c4a, #e5b342, #c41c4a);
+        }
+
+        #navbar {
+            background-color: #14030d;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #brand {
+            color: #e5b342;
+            font-size: 22px;
+            font-weight: bold;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-link {
+            color: #dfd4d9;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .nav-link:hover, .active {
+            background-color: #e5b342;
+            color: #14030d;
+            font-weight: bold;
+        }
+
+        .btn-salon {
+            background-color: #e5b342;
+            color: #14030d;
+            padding: 8px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #gallery-header {
+            background: linear-gradient(135deg, #14030d, #2e091f, #15020c);
+            color: #ffffff;
+            padding: 50px 40px;
+            text-align: center;
+        }
+
+        .header-badge {
+            color: #e5b342;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .header-title {
+            font-size: 38px;
+            margin: 0 0 10px 0;
+        }
+
+        .header-desc {
+            max-width: 680px;
+            margin: 0 auto;
+            color: #d8c9d1;
+            font-size: 15px;
+        }
+
+        /* Clean White Background for Gallery Section */
+        #gallery-section {
+            background-color: #ffffff;
+            padding: 50px 40px;
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+
+        .gallery-filter-bar {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 35px;
+        }
+
+        .g-filter-btn {
+            background-color: #f7f4ee;
+            border: 1px solid rgba(20, 3, 13, 0.15);
+            color: #2b2528;
+            padding: 7px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .g-filter-btn:hover, .g-filter-btn.active {
+            background-color: #14030d;
+            color: #e5b342;
+            border-color: #14030d;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .g-card {
+            background-color: #ffffff;
+            border: 1px solid rgba(229, 179, 66, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .g-card:hover {
+            transform: translateY(-4px);
+            border-color: #e5b342;
+            transition: all 0.3s ease;
+        }
+
+        .g-img-wrap {
+            position: relative;
+            height: 200px;
+        }
+
+        .g-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .g-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #14030d;
+            color: #e5b342;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .g-info {
+            padding: 14px;
+            flex: 1;
+        }
+
+        .g-info h3 {
+            margin: 0 0 6px 0;
+            font-size: 15px;
+            color: #14030d;
+        }
+
+        .g-info p {
+            margin: 0 0 10px 0;
+            font-size: 12px;
+            color: #6e646a;
+            line-height: 1.4;
+        }
+
+        .g-meta {
+            font-size: 11px;
+            color: #c41c4a;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        #spotlight {
+            background-color: #faf7f2;
+            padding: 50px 40px;
+        }
+
+        .spotlight-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .spotlight-text {
+            flex: 1.1;
+        }
+
+        .spotlight-img {
+            flex: 0.9;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid #e5b342;
+        }
+
+        .spotlight-img img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            display: block;
+        }
+
+        #quote-banner {
+            background: linear-gradient(135deg, #1f0511, #2e091f);
+            color: #ffffff;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .quote-text {
+            max-width: 750px;
+            margin: 0 auto;
+            font-size: 16px;
+            font-style: italic;
+            color: #e5d8dc;
+        }
+
+        #footer {
+            background-color: #14030d;
+            color: #dfd4d9;
+            padding: 40px;
+            text-align: center;
+            border-top: 2px solid #e5b342;
+        }
+
+        #footer a {
+            color: #e5b342;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- top cultural ribbon -->
+    <div id="ribbon"></div>
+
+    <!-- navigation bar -->
+    <nav id="navbar">
+        <a href="index.html" id="brand"><i class="bi bi-gem"></i> CONGO FASHION HOUSE</a>
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="collections.html" class="nav-link">Collections</a></li>
+            <li><a href="Design Models.html" class="nav-link">Designers &amp; Models</a></li>
+            <li><a href="fashion gallery.html" class="nav-link active">Gallery</a></li>
+            <li><a href="contact Us.html" class="nav-link">About &amp; Contact</a></li>
+            <li><a href="contact Us.html#appointment-form" class="btn-salon">Private Salon</a></li>
+        </ul>
+    </nav>
+
+    <!-- gallery header -->
+    <header id="gallery-header">
+        <span class="header-badge">&bull; ATELIER COUTURE &bull; ARCHIVE EXHIBITION &bull;</span>
+        <h1 class="header-title">Fashion Gallery</h1>
+        <p class="header-desc">A curated visual journey through Congolese style, ancestral textile symbology, and boundary-defying contemporary haute couture.</p>
+    </header>
+
+    <!-- main gallery section (clean white background as requested) -->
+    <section id="gallery-section">
+        <!-- filter buttons -->
+        <div class="gallery-filter-bar">
+            <button class="g-filter-btn active">ALL WORKS (12)</button>
+            <button class="g-filter-btn">TRADITIONAL</button>
+            <button class="g-filter-btn">MODERN DRESS</button>
+            <button class="g-filter-btn">MEN'S FASHION</button>
+            <button class="g-filter-btn">ACCESSORIES</button>
+            <button class="g-filter-btn">RUNWAY</button>
+            <button class="g-filter-btn">HANDBAGS</button>
+            <button class="g-filter-btn">FOOTWEAR</button>
+        </div>
+
+        <!-- 12 gallery cards grid -->
+        <div class="gallery-grid">
+            <div class="g-card">
+                <div class="g-img-wrap">
+                    <span class="g-tag">Traditional</span>
+                    <img src="images/download (13).jpg" alt="Reine de Kinshasa">
+                </div>
+                <div class="g-info">
+                    <h3>Reine de Kinshasa</h3>
+                    <p>Ceremonial royal gown from ancestral court regalia.</p>
+                    <span class="g-meta">Kinshasa Atelier &bull; 2026</span>
+                </div>
+            </div>
+
+            <div class="g-card">
+                <div class="g-img-wrap">
+                    <span class="g-tag">Modern</span>
+                    <img src="images/download (14).jpg" alt="Fleuve Gala">
+                </div>
+                <div class="g-info">
+                    <h3>Fleuve Luminaire Gala</h3>
+                    <p>Architectural cape dress infusing vibranium purple.</p>
+                    <span class="g-meta">Haute Collection &bull; Look 01</span>
+                </div>
+            </div>
+
+            <div class="g-card">
+                <div class="g-img-wrap">
+                    <span class="g-tag">Men's</span>
+                    <img src="images/Modern Ankara Power Suit Outfits _ African Print Duster & Trousers.jpg" alt="Le Sapeur">
+                </div>
+                <div class="g-info">
+                    <h3>Le Sapeur Sartorial</h3>
+                    <p>Double-breasted jacquard combining French cuts.</p>
+                    <span class="g-meta">Sapeur Legacy &bull; 2026</span>
+                </div>
+            </div>
+
+            <div class="g-card">
+                <div class="g-img-wrap"><span class="g-tag">Accessories</span><img src="images/My Game, His Rules 🃏.jpg" alt="Malachite Parure"></div>
+                <div class="g-info"><h3>Malachite &amp; Bronze</h3><p>Handmade collar with Katanga green malachite jewels.</p><span class="g-meta">Jewelry Guild &bull; One of One</span></div>
+            </div>
+
+            <div class="g-card">
+                <div class="g-img-wrap"><span class="g-tag">Runway</span><img src="images/The Afrofuturistic Designs of ‘Black Panther’ - The New York Times.jpg" alt="Fashion Week"></div>
+                <div class="g-info"><h3>Kinshasa Fashion Week</h3><p>Gold spun silk floor-tier couture salon showcase.</p><span class="g-meta">Runway &bull; Look 28</span></div>
+            </div>
+
+            <div class="g-card">
+                <div class="g-img-wrap"><span class="g-tag">Handbags</span><img src="images/🔥 Cool_ Bold. Unapologetically African._Just look at what this print brings to boys’ fashion! 💙🧡🖤_A little imagination can turn one fabric into a whole new styl. ✨__Would you dress your little gentleman in this_ 👀" alt="Minaudière"></div>
+                <div class="g-info"><h3>Minaudière Royale</h3><p>Leather clutch box with hand-woven kitenge insets.</p><span class="g-meta">Leather Goods &bull; Limited</span></div>
+            </div>
+
+            <div class="g-card">
+                <div class="g-img-wrap"><span class="g-tag">Footwear</span><img src="images/download (16).jpg" alt="Derbies"></div>
+                <div class="g-info"><h3>Derbies &amp; Escarpins Neo</h3><p>Leather footwear accented with archival runners.</p><span class="g-meta">Footwear &bull; Atelier Series</span></div>
+            </div>
+
+            <div class="g-card">
+                <div class="g-img-wrap"><span class="g-tag">Patterns</span><img src="images/download (17).jpg" alt="Motif Étoile"></div>
+                <div class="g-info"><h3>Motif Étoile du Congo</h3><p>Wax resist textile detailing legendary star motifs.</p><span class="g-meta">Textile Archive &bull; Motif 11</span></div>
+            </div>
+
+            <div class="g-card">
+                <div class="g-img-wrap"><span class="g-tag">Process</span><img src="images/download (18).jpg" alt="Atelier de Coupe"></div>
+                <div class="g-info"><h3>L'Atelier de Coupe</h3><p>Master couturier cutting bespoke patterns by hand.</p><span class="g-meta">Kinshasa Tailor Arts</span></div>
+            </div>
+
+            <div class="g-card">
+                <div class="g-img-wrap"><span class="g-tag">Men's</span><img src="images/House Of Vieve (Nigeria)  #AMVCA2026.jpg" alt="Élégance du Fleuve"></div>
+                <div class="g-info"><h3>Élégance du Fleuve</h3><p>Structured 3-piece emerald sartorial suit with wax lapels.</p><span class="g-meta">Sartorial Suite &bull; No. 04</span></div>
+            </div>
+
+            <div class="g-card">
+                <div class="g-img-wrap"><span class="g-tag">Modern</span><img src="images/_A Nobreza Do Amor_ no Rio Fashion Week 2026.jpg" alt="Origami Wax"></div>
+                <div class="g-info"><h3>Origami Wax Sculpture</h3><p>Architectural folded shoulders rooted in ancestral geometry.</p><span class="g-meta">Capsule &bull; Paris Salons</span></div>
+            </div>
+
+            <div class="g-card">
+                <div class="g-img-wrap"><span class="g-tag">Handbags</span><img src="images/Love forever by JOEYMUSIC 256.jpg" alt="Pochette Koba"></div>
+                <div class="g-info"><h3>Pochette Koba Perlée</h3><p>Over 15,000 hand-sewn glass seed beads depicting shields.</p><span class="g-meta">Artisan Guild &bull; Encrusted</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- runway spotlight section -->
+    <section id="spotlight">
+        <div class="spotlight-wrap">
+            <div class="spotlight-text">
+                <span style="color:#c41c4a;font-weight:bold;font-size:12px;text-transform:uppercase;">EDITORIAL FEATURE</span>
+                <h2 style="font-size:26px;color:#14030d;margin:5px 0 10px 0;">Runway Spotlight &amp; Living Heritage</h2>
+                <p style="color:#6e646a;font-size:14px;">Every curve and mineral hue woven into Congolese Kitenge and Kuba fabrics is a linguistic dialect celebrating royalty and ancestral journeys.</p>
+                <div style="background:#ffffff;padding:12px;border-left:4px solid #c41c4a;border-radius:6px;margin-top:15px;">
+                    <strong style="color:#c41c4a;font-size:12px;">SYMBOL CODE #08:</strong>
+                    <p style="margin:2px 0 0 0;font-size:13px;color:#2b2528;">Mbwadi Pan-African Lines: Denotes endurance and continuous blessing.</p>
+                </div>
+            </div>
+            <div class="spotlight-img">
+                <img src="images/This is what royalty wears.jpg" alt="Runway Spotlight">
+            </div>
+        </div>
+    </section>
+
+    <!-- quote banner -->
+    <section id="quote-banner">
+        <h3 style="color:#e5b342;margin-bottom:8px;">FROM THE SOUL OF THE MAISON</h3>
+        <p class="quote-text">"Fashion is more than clothing in Congo &mdash; it is a form of identity, a way of telling stories, and a celebration of our heritage, creativity, and unity."</p>
+    </section>
+
+    <!-- footer section -->
+    <footer id="footer">
+        <p>&copy; 2026 Congo Fashion House. All rights reserved. Fashion is Culture &mdash; Congo.</p>
+        <p>
+            <a href="index.html">Home</a> |
+            <a href="collections.html">Collections</a> |
+            <a href="Design Models.html">Designers &amp; Models</a> |
+            <a href="fashion gallery.html">Gallery</a> |
+            <a href="contact Us.html">About &amp; Contact</a>
+        </p>
+    </footer>
+
+    
+</body>
+</html>
